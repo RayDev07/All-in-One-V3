@@ -9,7 +9,7 @@ module.exports = {
   name: "beg",
   description: "beg from someone",
   category: "ECONOMY",
-  cooldown: 21600,
+  cooldown: 15, // ✅ cooldown changed to 15 seconds
   botPermissions: ["EmbedLinks"],
   command: {
     enabled: true,
@@ -19,18 +19,30 @@ module.exports = {
   },
 
   async messageRun(message, args) {
+    const allowedUserId = "1380834797630259322"; // ✅ only this user can use the command
+
+    if (message.author.id !== allowedUserId) {
+      return message.safeReply("❌ You don't have permission to use this command.");
+    }
+
     const response = await beg(message.author);
     await message.safeReply(response);
   },
 
   async interactionRun(interaction) {
+    const allowedUserId = "1380834797630259322"; // ✅ same restriction for slash command
+
+    if (interaction.user.id !== allowedUserId) {
+      return interaction.followUp("❌ You don't have permission to use this command.");
+    }
+
     const response = await beg(interaction.user);
     await interaction.followUp(response);
   },
 };
 
 async function beg(user) {
-  let users = [
+  const users = [
     "PewDiePie",
     "T-Series",
     "Sans",
@@ -59,7 +71,11 @@ async function beg(user) {
     "Joe Mama",
   ];
 
-  let amount = Math.floor(Math.random() * `${ECONOMY.MAX_BEG_AMOUNT}` + `${ECONOMY.MIN_BEG_AMOUNT}`);
+  // ✅ Proper random range formula
+  const amount =
+    Math.floor(Math.random() * (ECONOMY.MAX_BEG_AMOUNT - ECONOMY.MIN_BEG_AMOUNT + 1)) +
+    ECONOMY.MIN_BEG_AMOUNT;
+
   const userDb = await getUser(user);
   userDb.coins += amount;
   await userDb.save();
