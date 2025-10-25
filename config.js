@@ -5,7 +5,7 @@ module.exports = {
   VOTE: "https://dsc.gg/codexdev",
   PREFIX_COMMANDS: {
     ENABLED: true, // Enable/Disable prefix commands
-    DEFAULT_PREFIX: ",", // Default prefix for the bot
+    DEFAULT_PREFIX: "+", // Default prefix for the bot
   },
   INTERACTIONS: {
     SLASH: true, // Should the interactions be enabled
@@ -38,15 +38,15 @@ module.exports = {
   },
 
   DASHBOARD: {
-    enabled: false, // enable or disable dashboard
-    baseURL: "http://localhost:8080", // base url
+    enabled: true, // enable or disable dashboard
+    baseURL: "https://all-in-one-v3-k4mg.onrender.com", // base url
     failureURL: "http://localhost:8080", // failure redirect url
     port: "8080", // port to run the bot on
   },
 
   ECONOMY: {
     ENABLED: true,
-    CURRENCY: "$",
+    CURRENCY: "🥚",
     DAILY_COINS: 100, // coins to be received by daily command
     MIN_BEG_AMOUNT: 100, // minimum coins to be received when beg command is used
     MAX_BEG_AMOUNT: 2500, // maximum coins to be received when beg command is used
@@ -72,7 +72,7 @@ module.exports = {
 
   GIVEAWAYS: {
     ENABLED: true,
-    REACTION: "<:present:1362988775151767743>",
+    REACTION: "<a:presente:1431187820604559412>",
     START_EMBED: "#FF468A",
     END_EMBED: "#FF468A",
   },

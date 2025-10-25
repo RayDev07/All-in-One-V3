@@ -4,7 +4,7 @@ const { InteractionType } = require("discord.js");
 
 /**
  * @param {import('@src/structures').BotClient} client
- * @param {import('discord.js').BaseInteraction} interaction
+ * @param {import('discord.js').BaseInteraction} interactio
  */
 module.exports = async (client, interaction) => {
   if (!interaction.guild) {

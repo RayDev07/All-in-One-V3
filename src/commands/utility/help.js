@@ -124,7 +124,7 @@ async function getHelpMenu({ client, guild }) {
     .setEmoji('1238429509795971116')
     .setURL(VOTE);
 
-  const buttonsRow = new ActionRowBuilder().addComponents([supportButton, inviteButton, voteButton]);
+  const buttonsRow = new ActionRowBuilder().addComponents([supportButton]);
 
   const embed = new EmbedBuilder()
     .setColor(EMBED_COLORS.BOT_EMBED)
@@ -132,36 +132,36 @@ async function getHelpMenu({ client, guild }) {
     .setImage(`https://share.creavite.co/663f19346f72a4507e459a7b.gif`)
         .addFields([
         {
-          name: "__**<a:loading:1363179590851493958> Features [1-9]**__",
-          value: `>>> <:points:1362988742088065279> Admin 
-<:users:1362988710416875560> Anime 
-<:hammer:1362988671560843475> Automod 
-<:cash:1362988707992441042> Economy 
-<:fun:1362988649641148557> Fun 
-<:notification:1362988666640797847> Giveaway 
-<:link:1362988772760748062> Invite 
-<:bot:1362988630733357127> Information`,
+          name: "__**<a:loading:1430904475027243119> Features [1-9]**__",
+          value: `>>> <:Owner:1361776502143844515> Admin 
+<:users:1430900410536956035> Anime 
+<:automod:1430900348444344493> Automod 
+<:Golden_egg:1430900261311742135> Economy 
+<:fun:1430900070039158919> Fun 
+<:notify:1430899985637048412> Giveaway 
+<:link:1430901778706075699> Invite 
+<:bot:1430899801746309171> Information`,
           inline: true
         },
         {
-          name: "__**<a:loading:1363179590851493958> Features [10-18]**__",
-          value: `>>> <:gear:1362988633748934768> Moderation 
-<:fav_songs:1362988694390439946> Music 
-<:lock:1362988677784932564> Owner 
-<:com:1362988647137284136> Social 
-<:chart:1362988642225885314> Statistics 
-<:claim:1362988660273709067> Suggestions 
-<:transcript:1362988747326492782> Ticket 
-<:search:1362988723737723152> Utility `,
+          name: "__**<a:loading:1430904475027243119> Features [10-18]**__",
+          value: `>>> <:moderation:1430899677112438827> Moderation 
+<:music:1430899594568531980> Music 
+<:owner:1430900840368963665> Owner 
+<:Comandos:1430899515522547713> Social 
+<:Stats:1430900793724375141> Statistics 
+<:claim:1430899436753780821> Suggestions 
+<:transcript:1430899336677556244> Ticket 
+<:utility:1430902778850578455> Utility `,
           inline: true
         }
         ])
-    .setDescription(`<a:loading:1363179590851493958> **AIO V3 is here to help. \n > It is a multipourpose bot for your discord. \n > It can help you to build a Super server.**
-<a:loading:1363179590851493958> __**BOT INFO**__
-> <:circle:1362988697338773765> Prefix: \`/\`
-> <:circle:1362988697338773765> Discord.js Version: \`v14.15.2\`
-> <:circle:1362988697338773765> Running on \`${process.versions.node}\`
-> <:circle:1362988697338773765> Modified by \`ray.dev\``);
+    .setDescription(`<a:loading:1430904475027243119> **Mutta Puffs is here to help. \n > It is a multipourpose bot.**
+<a:loading:1430904475027243119> __**BOT INFO**__
+> <a:host:1430908941726122144> Prefix: \`M\`
+> <a:host:1430908941726122144> Discord.js Version: \`v14.15.2\`
+> <a:host:1430908941726122144> Running on \`${process.versions.node}\`
+> <a:host:1430908941726122144> Modified by \`Mavi\``);
 
   return {
     embeds: [embed],
@@ -290,7 +290,7 @@ function getSlashCategoryEmbeds(client, category) {
       const subCmds = cmd.slashCommand.options?.filter((opt) => opt.type === "SUB_COMMAND");
       const subCmdsString = subCmds?.map((s) => s.name).join(", ");
 
-      return `<:arrow_gx:1362988744616972499>\`/${cmd.name}\`\n <:circle:1362988697338773765> ${cmd.description} \n ${
+      return `<a:arrow:1430906634229780501>\`/${cmd.name}\`\n <a:loading:1430904475027243119> ${cmd.description} \n ${
         !subCmds?.length ? "" : `❯ **SubCommands [${subCmds?.length}]**: ${subCmdsString}\n`
       } `;
     });
@@ -364,7 +364,7 @@ function getMsgCategoryEmbeds(client, category, prefix) {
 
   while (commands.length) {
     let toAdd = commands.splice(0, commands.length > CMDS_PER_PAGE ? CMDS_PER_PAGE : commands.length);
-    toAdd = toAdd.map((cmd) => `<:arrow_gx:1362988744616972499> \`${prefix}${cmd.name}\`\n <:circle:1362988697338773765> ${cmd.description} \n`);
+    toAdd = toAdd.map((cmd) => `<a:arrow:1430906634229780501> \`${prefix}${cmd.name}\`\n <a:loading:1430904475027243119> ${cmd.description} \n`);
     arrSplitted.push(toAdd);
   }
 

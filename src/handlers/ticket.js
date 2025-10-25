@@ -233,11 +233,14 @@ async function handleTicketOpen(interaction) {
       });
     }
 
+    const CATEGORY_ID = "1428441760933351444";
+
     const tktChannel = await guild.channels.create({
       name: `tіcket-${ticketNumber}`,
       type: ChannelType.GuildText,
       topic: `tіcket|${user.id}|${catName || "Default"}`,
       permissionOverwrites,
+      parent: CATEGORY_ID,
     });
 
     const embed = new EmbedBuilder()
@@ -258,7 +261,9 @@ async function handleTicketOpen(interaction) {
         .setStyle(ButtonStyle.Primary)
     );
 
-    const sent = await tktChannel.send({ content: user.toString(), embeds: [embed], components: [buttonsRow] });
+    const MOD_ROLE_ID = "1426842696969883648";
+
+    const sent = await tktChannel.send({ content: `<@${user.id}> @everyone`, embeds: [embed], components: [buttonsRow], allowedMentions: { users: [user.id], parse: ["everyone"], } });
 
     const dmEmbed = new EmbedBuilder()
       .setColor(TICKET.CREATE_EMBED)

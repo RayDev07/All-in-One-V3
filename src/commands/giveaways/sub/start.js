@@ -30,11 +30,11 @@ module.exports = async (member, giveawayChannel, duration, prize, winners, host,
       hostedBy: host,
       thumbnail: "https://i.imgur.com/DJuTuxs.png",
       messages: {
-        giveaway: "<a:Giveaways:1362988756675727471> **GIVEAWAY** <a:Giveaways:1362988756675727471>",
-        giveawayEnded: "<a:Giveaways:1362988756675727471> **GIVEAWAY ENDED** <a:Giveaways:1362988756675727471>",
-        inviteToParticipate: "React with <:present:1362988775151767743> to enter",
-        dropMessage: "Be the first to react with <:present:1362988775151767743> to win!",
-        hostedBy: `\nHosted by: ${host.username}`,
+        giveaway: "<a:giveaways:1431187938959425617> **GIVEAWAY** <a:giveaways:1431187938959425617>",
+        giveawayEnded: "<a:giveaways:1431187938959425617> **GIVEAWAY ENDED** <a:giveaways:1431187938959425617>",
+        inviteToParticipate: "React with <a:presente:1431187820604559412> to enter",
+        dropMessage: "Be the first to react with <a:presente:1431187820604559412> to win!",
+        hostedBy: `\nHosted by: ${host.displayName}`,
       },
     };
 

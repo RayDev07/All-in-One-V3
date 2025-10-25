@@ -1,6 +1,7 @@
 const { counterHandler, inviteHandler, presenceHandler } = require("@src/handlers");
 const { cacheReactionRoles } = require("@schemas/ReactionRoles");
 const { getSettings } = require("@schemas/Guild");
+const { initTempVoiceSystem } = require("../../src/helpers/tempVoice");
 
 /**
  * @param {import('@src/structures').BotClient} client
@@ -49,4 +50,7 @@ module.exports = async (client) => {
   }
 
   setInterval(() => counterHandler.updateCounterChannels(client), 10 * 60 * 1000);
+
+  await initTempVoiceSystem(client);
+  client.logger.success("Temp Voice System initialized");
 };

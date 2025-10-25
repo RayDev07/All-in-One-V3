@@ -36,7 +36,7 @@ async function daily(user) {
   if (userDb.daily.timestamp) {
     const lastUpdated = new Date(userDb.daily.timestamp);
     const difference = diffHours(new Date(), lastUpdated);
-    if (difference < 24) {
+    if (difference < 1) {
       const nextUsage = lastUpdated.setHours(lastUpdated.getHours() + 24);
       return `You can again run this command in \`${getRemainingTime(nextUsage)}\``;
     }

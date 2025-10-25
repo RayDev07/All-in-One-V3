@@ -24,7 +24,6 @@ module.exports = {
     enabled: true,
     usage: "<#channel>",
     minArgsCount: 1,
-    aliases: ["say"],
   },
   slashCommand: {
     enabled: true,

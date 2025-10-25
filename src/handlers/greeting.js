@@ -55,7 +55,7 @@ const parse = async (content, member, inviterData = {}) => {
  */
 const buildGreeting = async (member, type, config, inviterData) => {
   if (!config) return;
-  let content;
+  let content = "";
 
   // build content
   if (config.content) content = await parse(config.content, member, inviterData);
@@ -105,9 +105,12 @@ async function sendWelcome(member, inviterData = {}) {
   // build welcome message
   const response = await buildGreeting(member, "WELCOME", config, inviterData);
 
-  channel.safeSend(response);
+  await channel.send({
+    content: `${member.toString()} ${response.content || ""}`,
+    embeds: response.embeds || [],
+    allowedMentions: { users: [member.id] },
+  });
 }
-
 /**
  * Send farewell message
  * @param {import('discord.js').GuildMember} member
@@ -124,9 +127,12 @@ async function sendFarewell(member, inviterData = {}) {
   // build farewell message
   const response = await buildGreeting(member, "FAREWELL", config, inviterData);
 
-  channel.safeSend(response);
+  await channel.send({
+    content: `${member.toString()} ${response.content || ""}`,
+    embeds: response.embeds || [],
+    allowedMentions: { users: [member.id] },
+  });
 }
-
 module.exports = {
   buildGreeting,
   sendWelcome,

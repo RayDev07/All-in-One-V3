@@ -6,7 +6,6 @@ const { EMBED_COLORS, IMAGE } = require("@root/config.js");
 const availableOverlays = [
   "approved",
   "brazzers",
-  "gay",
   "halloween",
   "rejected",
   "thuglife",

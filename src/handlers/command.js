@@ -35,20 +35,20 @@ module.exports = {
 
     // Owner commands
     if (cmd.category === "OWNER" && !OWNER_IDS.includes(message.author.id)) {
-      return message.safeReply("This command is only accessible to bot owners");
+      return message.safeReply({ content: `This command is only accessible to bot owners`, ephemeral: true });
     }
 
     // check user permissions
     if (cmd.userPermissions && cmd.userPermissions?.length > 0) {
       if (!message.channel.permissionsFor(message.member).has(cmd.userPermissions)) {
-        return message.safeReply(`You need ${parsePermissions(cmd.userPermissions)} for this command`);
+        return message.safeReply({ content: `You need ${parsePermissions(cmd.userPermissions)} for this command`, ephemeral: true });
       }
     }
 
     // check bot permissions
     if (cmd.botPermissions && cmd.botPermissions.length > 0) {
       if (!message.channel.permissionsFor(message.guild.members.me).has(cmd.botPermissions)) {
-        return message.safeReply(`I need ${parsePermissions(cmd.botPermissions)} for this command`);
+        return message.safeReply({ content: `I need ${parsePermissions(cmd.botPermissions)} for this command`, ephemeral: true });
       }
     }
 
@@ -62,7 +62,7 @@ module.exports = {
     if (cmd.cooldown > 0) {
       const remaining = getRemainingCooldown(message.author.id, cmd);
       if (remaining > 0) {
-        return message.safeReply(`You are on cooldown. You can again use the command in \`${timeformat(remaining)}\``);
+        return message.safeReply({ content: `You are on cooldown. You can again use the command in \`${timeformat(remaining)}\``, ephemeral: true });
       }
     }
 
@@ -70,7 +70,7 @@ module.exports = {
       await cmd.messageRun(message, args, data);
     } catch (ex) {
       message.client.logger.error("messageRun", ex);
-      message.safeReply("An error occurred while running this command");
+      return message.safeReply({ content: "An error occurred while running this command", ephemeral: true });
     } finally {
       if (cmd.cooldown > 0) applyCooldown(message.author.id, cmd);
     }

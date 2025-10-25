@@ -290,7 +290,11 @@ async function sendPreview(settings, member) {
   if (!targetChannel) return "No channel is configured to send welcome message";
 
   const response = await buildGreeting(member, "WELCOME", settings.welcome);
-  await targetChannel.safeSend(response);
+  await targetChannel.send({
+    content: `${member.toString()} ${response.content || ""}`, // mention outside embed
+    embeds: response.embeds || [],
+    allowedMentions: { users: [member.id] }, // important: enables ping
+  });
 
   return `Sent welcome preview to ${targetChannel.toString()}`;
 }
